@@ -3,10 +3,10 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { PersonalModule } from './personal/personal.module';
-import { ProductModule } from './product/product.module';
-import { CategoryModule } from './category/category.module';
-import { CategoryController } from './flat/category/controllers/category/category.controller';
+import { PersonalModule } from "./personal/personal.module";
+import { ProductModule } from "./product/product.module";
+import { CategoryModule } from "./category/category.module";
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -24,7 +24,7 @@ import { CategoryController } from './flat/category/controllers/category/categor
     ProductModule,
     CategoryModule,
   ],
-  controllers: [AppController, CategoryController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

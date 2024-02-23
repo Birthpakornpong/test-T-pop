@@ -11,6 +11,12 @@ export class CategoryEntity {
   @Column({ default: "" })
   name: string;
 
+  @Column({ default: "" })
+  nameTh: string;
+
+  @Column({ default: true })
+  active: Boolean;
+
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   createdAt: Date;
 }
