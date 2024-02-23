@@ -4,6 +4,9 @@ import { AppService } from "./app.service";
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { PersonalModule } from './personal/personal.module';
+import { ProductModule } from './product/product.module';
+import { CategoryModule } from './category/category.module';
+import { CategoryController } from './flat/category/controllers/category/category.controller';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -18,8 +21,10 @@ import { PersonalModule } from './personal/personal.module';
       synchronize: true,
     }),
     PersonalModule,
+    ProductModule,
+    CategoryModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, CategoryController],
   providers: [AppService],
 })
 export class AppModule {}
