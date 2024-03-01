@@ -28,11 +28,11 @@ export class SeatService {
   }
 
   async updateSeatStatus(id: number, newStatus: string): Promise<SeatInfo> {
-    const ticket = await this.seatInfoRepository.findOne({ where: { id: id } });
-    if (!ticket) {
+    const seat = await this.seatInfoRepository.findOne({ where: { id: id } });
+    if (!seat) {
       throw new Error("Seat not found");
     }
-    ticket.seat_status = newStatus;
-    return await this.seatInfoRepository.save(ticket);
+    seat.seat_status = newStatus;
+    return await this.seatInfoRepository.save(seat);
   }
 }

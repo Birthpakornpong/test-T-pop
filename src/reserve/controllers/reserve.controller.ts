@@ -17,8 +17,8 @@ export class ReserveController {
 
   // method ต่างๆ
   @Post()
-  async create(@Body() reserveInfo: ReserveInfo): Promise<ReserveInfo> {
-    return await this.reserveService.createReserve(reserveInfo);
+  async reserve(@Body() reserveInfo: ReserveInfo): Promise<ReserveInfo> {
+    return await this.reserveService.reserveSeat(reserveInfo);
   }
   @Get()
   async findAll(): Promise<ReserveInfo[]> {

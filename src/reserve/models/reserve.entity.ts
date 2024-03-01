@@ -5,11 +5,11 @@ export class ReserveInfoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ default: "" })
-  seat_id: string;
+  @Column({ default: 0 })
+  seat_id: number;
 
-  @Column({ default: "" })
-  user_id: string;
+  @Column({ default: 0 })
+  user_id: number;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   date: Date;

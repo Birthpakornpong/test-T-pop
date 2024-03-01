@@ -1,6 +1,6 @@
 export interface ReserveInfo {
   id?: number;
-  seat_id?: string;
-  user_id?: string;
+  seat_id?: number;
+  user_id?: number;
   date?: Date;
 }
