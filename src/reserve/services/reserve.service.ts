@@ -45,9 +45,17 @@ export class ReserveService {
     return await this.seatInfoRepository.save(seat);
   }
 
-  async findReservesByUser(id: number): Promise<ReserveInfo[]> {
-    return await this.reserveInfoRepository.find({
-      where: { id: id },
+  async findReservesByUser(id: number): Promise<Object> {
+    const seat = await this.reserveInfoRepository.find({
+      where: { user_id: id },
     });
+
+    if (!seat) {
+      throw new Error("User not reserve");
+    }
+    return {
+      reserve: seat,
+      totalSeat: seat.length,
+    };
   }
 }

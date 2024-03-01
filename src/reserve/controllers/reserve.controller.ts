@@ -26,7 +26,7 @@ export class ReserveController {
   }
 
   @Get("/reserve-by-user/:id")
-  async reservesByUser(@Param("id") id: number): Promise<ReserveInfo[]> {
+  async reservesByUser(@Param("id") id: number): Promise<Object> {
     return await this.reserveService.findReservesByUser(id);
   }
   @Patch(":id")
