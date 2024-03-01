@@ -19,7 +19,12 @@ export class ReserveService {
   }
 
   async findAllReserves(): Promise<ReserveInfo[]> {
-    return await this.reserveInfoRepository.find();
+    return await this.reserveInfoRepository.find({
+      relations: {
+        seat: true,
+        user: true,
+      },
+    });
   }
 
   async updateReserve(
@@ -48,6 +53,10 @@ export class ReserveService {
   async findReservesByUser(id: number): Promise<Object> {
     const seat = await this.reserveInfoRepository.find({
       where: { user_id: id },
+      relations: {
+        seat: true,
+        user: true,
+      },
     });
 
     if (!seat) {
