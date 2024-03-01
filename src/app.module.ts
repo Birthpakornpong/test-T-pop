@@ -13,6 +13,8 @@ import { JwtStrategy } from "./auth/jwt.strategy";
 import { UserModule } from "./user/user.module";
 import { SeatModule } from "./seat/seat.module";
 import { ReserveModule } from "./reserve/reserve.module";
+import { AuthModule } from "./auth/auth.module";
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -35,8 +37,9 @@ import { ReserveModule } from "./reserve/reserve.module";
     UserModule,
     SeatModule,
     ReserveModule,
+    AuthModule,
   ],
-  controllers: [AppController, AuthController],
-  providers: [AppService, AuthService, LocalStrategy, JwtStrategy],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

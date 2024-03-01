@@ -18,21 +18,21 @@ export class UserController {
   // method ต่างๆ
   @Post()
   async create(@Body() userInfo: UserInfo): Promise<UserInfo> {
-    return await this.userService.createPost(userInfo);
+    return await this.userService.createUser(userInfo);
   }
   @Get()
   async findAll(): Promise<UserInfo[]> {
-    return await this.userService.findAllPosts();
+    return await this.userService.findAllUsers();
   }
   @Patch(":id")
   async update(
     @Param("id") id: number,
     @Body() userInfo: UserInfo
   ): Promise<UpdateResult> {
-    return await this.userService.updatePost(id, userInfo);
+    return await this.userService.updateUser(id, userInfo);
   }
   @Delete(":id")
   async delete(@Param("id") id: number): Promise<DeleteResult> {
-    return await this.userService.deletePost(id);
+    return await this.userService.deleteUser(id);
   }
 }

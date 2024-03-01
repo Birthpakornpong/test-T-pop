@@ -12,7 +12,7 @@ export class UserInfoEntity {
   name: string;
 
   @Column({ default: "" })
-  username: string;
+  email: string;
 
   @Column({ default: "" })
   password: string;

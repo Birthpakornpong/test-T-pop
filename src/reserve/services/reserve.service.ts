@@ -44,4 +44,10 @@ export class ReserveService {
     await this.reserveInfoRepository.save(reserveInfo);
     return await this.seatInfoRepository.save(seat);
   }
+
+  async findReservesByUser(id: number): Promise<ReserveInfo[]> {
+    return await this.reserveInfoRepository.find({
+      where: { id: id },
+    });
+  }
 }

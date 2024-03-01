@@ -11,21 +11,25 @@ export class UserService {
     private readonly userInfoRepository: Repository<UserInfoEntity>
   ) {}
 
-  // การทำงานต่างๆของ แต่ละเส้น api
-  // support เส้น post
-  async createPost(userInfo: UserInfo): Promise<UserInfo> {
+  async createUser(userInfo: UserInfo): Promise<UserInfo> {
     return await this.userInfoRepository.save(userInfo);
   }
-  // support เส้น get
-  async findAllPosts(): Promise<UserInfo[]> {
+
+  async findAllUsers(): Promise<UserInfo[]> {
     return await this.userInfoRepository.find();
   }
-  // support เส้น patch
-  async updatePost(id: number, UserInfo: UserInfo): Promise<UpdateResult> {
+
+  async findOneUsers(email: string): Promise<UserInfo> {
+    return await this.userInfoRepository.findOne({
+      where: { email: email },
+    });
+  }
+
+  async updateUser(id: number, UserInfo: UserInfo): Promise<UpdateResult> {
     return await this.userInfoRepository.update(id, UserInfo);
   }
-  // support เส้น delete
-  async deletePost(id: number): Promise<DeleteResult> {
+
+  async deleteUser(id: number): Promise<DeleteResult> {
     return await this.userInfoRepository.delete(id);
   }
 }

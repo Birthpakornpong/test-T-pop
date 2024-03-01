@@ -15,7 +15,7 @@ import { ReserveService } from "../services/reserve.service";
 export class ReserveController {
   constructor(private reserveService: ReserveService) {}
 
-  // method ต่างๆ
+  // reserve
   @Post()
   async reserve(@Body() reserveInfo: ReserveInfo): Promise<ReserveInfo> {
     return await this.reserveService.reserveSeat(reserveInfo);
@@ -23,6 +23,11 @@ export class ReserveController {
   @Get()
   async findAll(): Promise<ReserveInfo[]> {
     return await this.reserveService.findAllReserves();
+  }
+
+  @Get("/reserve-by-user/:id")
+  async reservesByUser(@Param("id") id: number): Promise<ReserveInfo[]> {
+    return await this.reserveService.findReservesByUser(id);
   }
   @Patch(":id")
   async update(
