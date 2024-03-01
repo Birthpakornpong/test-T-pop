@@ -11,21 +11,28 @@ export class SeatService {
     private readonly seatInfoRepository: Repository<SeatInfoEntity>
   ) {}
 
-  // การทำงานต่างๆของ แต่ละเส้น api
-  // support เส้น post
-  async createPost(userInfo: SeatInfo): Promise<SeatInfo> {
-    return await this.seatInfoRepository.save(userInfo);
+  async createSeat(seatInfo: SeatInfo): Promise<SeatInfo> {
+    return await this.seatInfoRepository.save(seatInfo);
   }
-  // support เส้น get
-  async findAllPosts(): Promise<SeatInfo[]> {
+
+  async findAllSeats(): Promise<SeatInfo[]> {
     return await this.seatInfoRepository.find();
   }
-  // support เส้น patch
-  async updatePost(id: number, seatInfo: SeatInfo): Promise<UpdateResult> {
+
+  async updateSeat(id: number, seatInfo: SeatInfo): Promise<UpdateResult> {
     return await this.seatInfoRepository.update(id, seatInfo);
   }
-  // support เส้น delete
-  async deletePost(id: number): Promise<DeleteResult> {
+
+  async deleteSeat(id: number): Promise<DeleteResult> {
     return await this.seatInfoRepository.delete(id);
+  }
+
+  async updateSeatStatus(id: number, newStatus: string): Promise<SeatInfo> {
+    const ticket = await this.seatInfoRepository.findOne({ where: { id: id } });
+    if (!ticket) {
+      throw new Error("Seat not found");
+    }
+    ticket.seat_status = newStatus;
+    return await this.seatInfoRepository.save(ticket);
   }
 }

@@ -4,5 +4,5 @@ export interface SeatInfo {
   row?: string;
   seat_number?: string;
   seat_status?: string;
-  createdAt?: Date;
+  date?: Date;
 }

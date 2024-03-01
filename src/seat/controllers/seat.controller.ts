@@ -18,21 +18,29 @@ export class SeatController {
   // method ต่างๆ
   @Post()
   async create(@Body() seatInfo: SeatInfo): Promise<SeatInfo> {
-    return await this.seatService.createPost(seatInfo);
+    return await this.seatService.createSeat(seatInfo);
   }
   @Get()
   async findAll(): Promise<SeatInfo[]> {
-    return await this.seatService.findAllPosts();
+    return await this.seatService.findAllSeats();
   }
   @Patch(":id")
   async update(
     @Param("id") id: number,
     @Body() seatInfo: SeatInfo
   ): Promise<UpdateResult> {
-    return await this.seatService.updatePost(id, seatInfo);
+    return await this.seatService.updateSeat(id, seatInfo);
   }
   @Delete(":id")
   async delete(@Param("id") id: number): Promise<DeleteResult> {
-    return await this.seatService.deletePost(id);
+    return await this.seatService.deleteSeat(id);
+  }
+
+  @Patch(":id/update-status/:newStatus")
+  async updateSeatStatus(
+    @Param("id") id: number,
+    @Param("newStatus") newStatus: string
+  ): Promise<SeatInfo> {
+    return await this.seatService.updateSeatStatus(id, newStatus);
   }
 }

@@ -3,9 +3,6 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { PersonalModule } from "./personal/personal.module";
-import { ProductModule } from "./product/product.module";
-import { CategoryModule } from "./category/category.module";
 
 import { PassportModule } from "@nestjs/passport";
 import { AuthController } from "./auth/auth.controller";
@@ -15,7 +12,7 @@ import { JwtModule } from "@nestjs/jwt";
 import { JwtStrategy } from "./auth/jwt.strategy";
 import { UserModule } from "./user/user.module";
 import { SeatModule } from "./seat/seat.module";
-import { ReserveModule } from './reserve/reserve.module';
+import { ReserveModule } from "./reserve/reserve.module";
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -29,9 +26,6 @@ import { ReserveModule } from './reserve/reserve.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    PersonalModule,
-    ProductModule,
-    CategoryModule,
 
     PassportModule,
     JwtModule.register({
