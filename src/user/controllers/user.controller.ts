@@ -18,7 +18,7 @@ export class UserController {
   // method ต่างๆ
   @Post()
   async create(@Body() userInfo: UserInfo): Promise<UserInfo> {
-    return await this.userService.createUser(userInfo);
+    return await this.userService.register(userInfo);
   }
   @Get()
   async findAll(): Promise<UserInfo[]> {

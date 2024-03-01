@@ -18,5 +18,5 @@ export class UserInfoEntity {
   password: string;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
-  createdAt: Date;
+  date: Date;
 }

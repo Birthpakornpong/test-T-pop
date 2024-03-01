@@ -3,7 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { DeleteResult, Repository, UpdateResult } from "typeorm";
 import { UserInfoEntity } from "../models/user.entity";
 import { UserInfo } from "../models/interfaces/user.interface";
-
+import * as bcrypt from "bcrypt";
 @Injectable()
 export class UserService {
   constructor(
@@ -11,7 +11,8 @@ export class UserService {
     private readonly userInfoRepository: Repository<UserInfoEntity>
   ) {}
 
-  async createUser(userInfo: UserInfo): Promise<UserInfo> {
+  async register(userInfo: UserInfo): Promise<UserInfo> {
+    userInfo.password = bcrypt(userInfo.password);
     return await this.userInfoRepository.save(userInfo);
   }
 
