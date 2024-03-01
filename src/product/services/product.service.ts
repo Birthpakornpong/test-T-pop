@@ -20,6 +20,15 @@ export class ProductService {
   async findAllPosts(): Promise<ProductInfo[]> {
     return await this.productInfoRepository.find();
   }
+
+  // support เส้น get
+  async findPost(id: number): Promise<ProductInfo> {
+    return await this.productInfoRepository.findOne({
+      where: {
+        id,
+      },
+    });
+  }
   // support เส้น patch
   async updatePost(
     id: number,

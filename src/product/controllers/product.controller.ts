@@ -24,6 +24,12 @@ export class ProductController {
   async findAll(): Promise<ProductInfo[]> {
     return await this.productService.findAllPosts();
   }
+
+  @Get(":id")
+  async find(@Param("id") id: number): Promise<ProductInfo> {
+    return await this.productService.findPost(id);
+  }
+
   @Patch(":id")
   async update(
     @Param("id") id: number,

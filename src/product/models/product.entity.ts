@@ -20,8 +20,29 @@ export class ProductEntity {
   @Column({ default: 0 })
   special_price: number;
 
+  @Column({ default: 0 })
+  product_rating: number;
+
   @Column({ default: "" })
   description: string;
+
+  @Column({ default: "" })
+  descriptionEn: string;
+
+  @Column({ default: "" })
+  product_storage_instruction_th: string;
+
+  @Column({ default: "" })
+  product_storage_instruction_en: string;
+
+  @Column({ default: "" })
+  product_precautionary_th: string;
+
+  @Column({ default: "" })
+  product_precautionary_en: string;
+
+  @Column({ default: 0 })
+  category_id: number;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   createdAt: Date;
